@@ -1,3 +1,6 @@
+from solution import Solution
+
+
 class SolutionBuilder:
     """
     A class that helps build a solution to the queens' problem
@@ -7,6 +10,12 @@ class SolutionBuilder:
         self.__size = size
         self.__queens_coords = []
         self.__free_spaces = [[i for i in range(size)] for _ in range(size)]
+
+    def get_solution(self):
+        """
+        :return: The solution if it's complete and None if not
+        """
+        return Solution(self.__queens_coords)
 
     def get_free_places_in_next_row(self) -> list:
         """
