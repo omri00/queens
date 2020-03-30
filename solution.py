@@ -1,5 +1,7 @@
 X_COORD_INDEX = 0
 Y_COORD_INDEX = 1
+LEFT = 0
+RIGHT = 1
 NUMBER_SIDES_IN_SQUARE = 4
 
 
@@ -31,7 +33,7 @@ class Solution:
             self._mirror()
             if self.__queens_coords == other.__queens_coords:
                 return True
-            self._rotate_left() if i % 2 == 0 else self._rotate_right()
+            self._rotate(LEFT) if i % 2 == 0 else self._rotate(RIGHT)
 
     def _mirror(self) -> None:
         """
@@ -40,24 +42,17 @@ class Solution:
         for queen_coords in self.__queens_coords:
             queen_coords[Y_COORD_INDEX] = self.__size - queen_coords[Y_COORD_INDEX] - 1
 
-    def _rotate_left(self) -> None:
+    def _rotate(self, direction) -> None:
         """
-        Rotate the solution left 90 degree
-        """
-        for queen_coords in self.__queens_coords:
-            place_holder = queen_coords[X_COORD_INDEX]
-            queen_coords[X_COORD_INDEX] = queen_coords[Y_COORD_INDEX]
-            queen_coords[Y_COORD_INDEX] = self.__size - place_holder - 1
-        self._sort_queens()
-
-    def _rotate_right(self) -> None:
-        """
-        Rotate the solution right 90 degree
+        Rotate the solution 90 degree to a given direction
+        :param direction: The direction
         """
         for queen_coords in self.__queens_coords:
-            place_holder = queen_coords[Y_COORD_INDEX]
-            queen_coords[Y_COORD_INDEX] = queen_coords[X_COORD_INDEX]
-            queen_coords[X_COORD_INDEX] = self.__size - place_holder - 1
+            first_coord = X_COORD_INDEX if direction == LEFT else Y_COORD_INDEX
+            second_coord = Y_COORD_INDEX if direction == LEFT else X_COORD_INDEX
+            place_holder = queen_coords[first_coord]
+            queen_coords[first_coord] = queen_coords[second_coord]
+            queen_coords[second_coord] = self.__size - place_holder - 1
         self._sort_queens()
 
     def _sort_queens(self) -> None:
