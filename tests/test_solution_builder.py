@@ -2,6 +2,7 @@
 This module tests the class SolutionBuilder
 """
 import pytest
+
 from solution_builder import SolutionBuilder
 
 

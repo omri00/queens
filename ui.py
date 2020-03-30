@@ -24,7 +24,7 @@ def print_solutions(solutions: list, solutions_num: int) -> None:
         if i >= len(solutions):
             print("That's all of the solution")
             return
-        print(f"{i+1}:\n{solutions[i]}")
+        print(f"{i + 1}:\n{solutions[i]}")
 
 
 def receive_int(msg) -> int:

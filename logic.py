@@ -1,8 +1,9 @@
 """
 This module has the logic to find all solutions to the queens problem
 """
-from solution_builder import SolutionBuilder
 from copy import deepcopy
+
+from solution_builder import SolutionBuilder
 
 
 def find_solutions(board_size: int) -> list:
