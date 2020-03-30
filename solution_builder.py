@@ -47,7 +47,7 @@ class SolutionBuilder:
         Update the free spaces after placing a queen in the first row and in the given column
         :param queen_space_column: The column of the new queen
         """
-        for row, i in zip(self.__free_spaces, range(len(self.__free_spaces))):
+        for i, row in enumerate(self.__free_spaces):
             if queen_space_column in row:
                 row.remove(queen_space_column)
             if queen_space_column + i in row:
