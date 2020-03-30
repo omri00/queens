@@ -39,7 +39,7 @@ class SolutionBuilder:
         if queen_space_column not in self.__free_spaces[0]:
             raise ValueError("A queen was placed in a taken space")
         queen_space_row = len(self.__queens_coords)
-        self.__queens_coords.append([queen_space_row, queen_space_column])
+        self.__queens_coords.append([queen_space_row, queen_space_column])  # Saves the space of the new queen
         self._update_free_spaces(queen_space_column)
 
     def _update_free_spaces(self, queen_space_column: int) -> None:
@@ -49,9 +49,9 @@ class SolutionBuilder:
         """
         for i, row in enumerate(self.__free_spaces):
             if queen_space_column in row:
-                row.remove(queen_space_column)
+                row.remove(queen_space_column)  # Update the column
             if queen_space_column + i in row:
-                row.remove(queen_space_column + i)
+                row.remove(queen_space_column + i)  # Update the right diagonal
             if queen_space_column - i in row:
-                row.remove(queen_space_column - i)
-        self.__free_spaces = self.__free_spaces[1:]
+                row.remove(queen_space_column - i)  # Update the left diagonal
+        self.__free_spaces = self.__free_spaces[1:]  # Update the row
